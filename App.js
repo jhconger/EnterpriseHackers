@@ -18,22 +18,24 @@ export default function App() {
                     style={styles.backgroundVideo}
                     muted={true}
                     repeat={true}
+                    paused={false}
+                    shouldPlay
                     resizeMode={"cover"}
                     rate={1.0}
                     ignoreSilentSwitch={"obey"}
                 />
 
                 <Wrapper>
-                    <Logo
-                        source={require("./assets/KOKOROlogo.png")}
-                        width={300}
-                        height={300}
-                        // resizeMode="contain"
-                    />
-                    <Title>Daily Mindfulness Exercises</Title>
-                    <TextDescription>
-                        Start your journey to peace   right here, right now
-                    </TextDescription>
+                    {/*<Logo*/}
+                    {/*    source={require("./assets/KOKOROlogo.png")}*/}
+                    {/*    width={300}*/}
+                    {/*    height={300}*/}
+                    {/*    // resizeMode="contain"*/}
+                    {/*/>*/}
+                    <Title>Begin Your Journey to Peace</Title>
+                    {/*<TextDescription>*/}
+                    {/*    begin journey to peace*/}
+                    {/*</TextDescription>*/}
                     <ButtonWrapper>
                         <Fragment>
                             <Button title="Create Account" />
@@ -80,11 +82,11 @@ export const ButtonWrapper = styled.View`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 550px;
 `;
 export const Title = styled.Text`
   color: #f4f4f4;
-  margin: 20% 0px 20px;
+  margin: 5% 0px 20px;
   font-size: 30;
   text-align: center;
   font-weight: bold;
