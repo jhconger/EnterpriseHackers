@@ -4,14 +4,24 @@ import {
     View,
     StyleSheet,
     Dimensions,
+    Alert,
     TouchableHighlight
 } from "react-native";
 import styled from "styled-components/native";
 import { Video, AVPlaybackStatus } from 'expo-av';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from "./src/screens/HomeScreen.js"
 const { width, height } = Dimensions.get("window");
 
+const Stack = createNativeStackNavigator();
+
+
 export default function App() {
+
         return (
+
+            <NavigationContainer>
             <View>
                 <Video
                     source={require("./assets/Serenity.mp4")}
@@ -24,26 +34,18 @@ export default function App() {
                     rate={1.0}
                     ignoreSilentSwitch={"obey"}
                 />
-
                 <Wrapper>
-                    {/*<Logo*/}
-                    {/*    source={require("./assets/KOKOROlogo.png")}*/}
-                    {/*    width={300}*/}
-                    {/*    height={300}*/}
-                    {/*    // resizeMode="contain"*/}
-                    {/*/>*/}
                     <Title>Begin Your Journey to Peace</Title>
-                    {/*<TextDescription>*/}
-                    {/*    begin journey to peace*/}
-                    {/*</TextDescription>*/}
                     <ButtonWrapper>
                         <Fragment>
-                            <Button title="Create Account" />
-                            <Button transparent title="Login" />
+                            <CreateButton title="Create Account" />
+                            <LoginButton transparent title="Login"/>
+
                         </Fragment>
                     </ButtonWrapper>
                 </Wrapper>
             </View>
+            </NavigationContainer>
         );
     }
 
@@ -109,10 +111,16 @@ const StyledTitle = styled.Text`
   letter-spacing: 3;
   color: ${props => (props.transparent ? "#f3f8ff " : "#666")};
 `;
-
-export const Button = ({ onPress, color, ...props }) => {
+export const CreateButton = ({ onPress, color, ...props }) => {
     return (
         <StyledButton {...props}>
+            <StyledTitle {...props}>{props.title}</StyledTitle>
+        </StyledButton>
+    );
+};
+export const LoginButton = ({ onPress, color, ...props }) => {
+    return (
+        <StyledButton onPress={() => Alert.alert('Login Button Pressed')} {...props}>
             <StyledTitle {...props}>{props.title}</StyledTitle>
         </StyledButton>
     );
